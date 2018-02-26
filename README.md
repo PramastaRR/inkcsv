@@ -1,8 +1,23 @@
 # InkCSV
-InkCSV is a program that helps you to make invitations, certificates, etc. from a CSV file and a SVG template. You will need Python (2.x or 3.x) and Inkscape to run this program.
+InkCSV is a program that helps you to make invitations, certificates, name tags, etc. from a CSV file and a SVG template.
+
+I made this program on a GNU/Linux distro, so I don't think it would work on another operating system (like Windows, BSD, or OS X).
 
 ## Installation
-To install this program in your Linux computer, copy the `inkcsv` file to a `$PATH` directory.
+
+To run this program, you will need:
+- Inkscape
+- Python (2.x or 3.x)
+
+To install this program, copy `inkcsv` file to a $PATH directory.
+
+If you have no idea what to do, please type these instructions in terminal:
+
+    sudo apt-get install inkscape python git
+    git clone https://github.com/PramastaRR/inkcsv.git
+    cd inkcsv
+    sudo cp inkcsv /usr/local/bin
+
 
 ## Usage
 
@@ -25,7 +40,7 @@ Case: We are going to make name tags for employees in a company.
 
 **template.svg**
 
-![alt text](template.svg)
+![alt text](readme_files/template.png)
 
 With CSV data source and SVG template above, we can make name tags with:
 
@@ -33,4 +48,8 @@ With CSV data source and SVG template above, we can make name tags with:
 
 The results will be saved in `exported` directory. The results will look like this:
 
-![alt text](result.png)
+![alt text](readme_files/result.png)
+
+## Contribution
+
+If you are interested with this project, you can contribute by making pull requests. I need your help to tidy up the code and the documentation!
