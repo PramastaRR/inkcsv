@@ -1,0 +1,33 @@
+#!/usr/bin/env python
+
+# import needed modules
+import os, sys, csv, shutil
+
+# get argument values for the CSV file, source SVG file, words to replace, and DPI
+src_csv = sys.argv[1]
+src_svg = sys.argv[2]
+words_replace = sys.argv[3].split(',')
+dst_dpi = sys.argv[4]
+
+# read the CSV file
+with open(src_csv, 'r') as f:
+    reader = csv.reader(f)
+    list_csv = list(reader)
+
+# make new folder for exported files
+os.system('mkdir exported')
+
+# copy the source SVG file, and rename it for each file
+for i in range (len(list_csv)):
+    dst_svg = 'exported/{}.svg'.format(str(i).zfill(4))
+    dst_png = 'exported/{}.pdf'.format(list_csv[i][0])
+    dst_png = dst_png.replace(" ","")
+    shutil.copyfile(src_svg, dst_svg)
+
+# replace the desired words
+    for j in range (len(words_replace)):
+        os.system("sed -i 's/{}/{}/g' {}".format(words_replace[j], list_csv[i][j], dst_svg))
+
+# export as PNG, and remove the new SVG
+    os.system('inkscape {} -A {}'.format(dst_svg, dst_png))
+    os.system('rm {}'.format(dst_svg))
